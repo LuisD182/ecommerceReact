@@ -1,0 +1,185 @@
+
+
+/* NAVBAR */
+.navBar{
+    background-color: #2F6A89;
+ }
+
+/* HOME */
+.card-Home{
+    height: 450px;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+.card-text-title{
+    font-size: medium;
+    height: 75px;
+}
+
+.card-text-home{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 1rem;
+
+justify-content: space-evenly;
+}
+
+/* PRODUCTS */
+
+ .cardsImg{
+    position: relative;
+
+}
+
+.list-category{
+    /* background-color: #f85555; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-around;
+    color: #2F6A89;
+    padding: 0;
+}
+
+.list-group-item{
+background-color: #2F6A89;
+padding: 1rem;
+border: none;
+}
+
+.list-group-item:hover{
+/* background:#f85555 */
+}
+
+
+.img-1{
+    position: absolute;
+    background-color: #fff;
+}
+.img-1:hover{
+    transition: 1.2s;
+   opacity: 0;
+}
+
+.carousel-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.item{
+    position: relative;
+    height: 100%;
+}
+.carousel-inner {
+    position: relative;
+    height: 100%;
+}
+.carousel-inner img {
+    position: relative;
+    top: 50%;
+    margin: auto;
+    object-fit: contain;
+    padding: 3rem;
+    height: 400px;
+    max-width: 350px;
+  }
+
+.carousel-control-prev-icon{
+    color: blue;
+    background-color: #f85555;
+    border-radius: 50%;
+    padding: 1rem;
+}
+.carousel-control-next-icon{
+    color: blue;
+    background-color: #f85555;
+    border-radius: 50%;
+    padding: 1rem;
+}
+.rowImg{
+    display: none;
+}
+.row-Img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    padding: 1rem;
+}
+
+.product-description{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+.product-description >h1{
+    padding: 1rem;
+    text-align: center;
+}
+
+span{
+    color: darkgray;
+    font-size: large;
+}
+.product-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.price{
+    display: flex;
+    flex-direction: column;
+}
+.quantity{
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-btn{
+    width: 100%;
+    padding: 0.3rem 1rem;
+    text-align: center;
+    margin: auto;
+    background-color: #f85555;
+    border-radius: .5rem;
+    font-size: large;
+    color: #fff;
+    border: none;
+}
+
+.card-text{
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (min-width:1100px){
+    .rowImg{
+        max-height: 150px;
+        display:flex;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .row-Img:hover{
+        transition: .7s;
+        box-shadow: .2px .2px 2px 2px blue;
+    }
+}
