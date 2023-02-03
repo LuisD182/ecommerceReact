@@ -26,6 +26,12 @@ const Home = () => {
     // console.log(productList);
     // console.log(categories);
 
+
+    const addProduct = () => {
+        alert(productSearchInput)
+    }
+
+
     return (
         <div>
             <Row >
@@ -64,7 +70,7 @@ const Home = () => {
                         <Button
                             onClick={() => dispatch(filterProductsTitleThunk(productSearchInput))}
                             variant="outline-secondary" id="button-addon2">
-                            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                            <i className="fa-solid fa-magnifying-glass fa-xl"></i>
                         </Button>
                     </InputGroup>
 
@@ -82,26 +88,28 @@ const Home = () => {
                                                     className='img-1'
                                                     variant="top"
                                                     src={currentProduct.images[0]?.url}
-                                                    style={{ maxWidth: 350, height: 200, objectFit: 'contain' }} />
+                                                    style={{ maxWidth: 350, height: 200, objectFit: 'contain', margin: 'auto' }} />
                                                 <Card.Img
                                                     className='img-2'
                                                     variant="top"
                                                     src={currentProduct.images[1]?.url}
-                                                    style={{ height: 200, objectFit: 'contain' }} />
+                                                    style={{ height: 200, objectFit: 'contain', margin: 'auto' }} />
                                             </div>
                                             <Card.Body className='card-body' >
                                                 <div className='card-text-home'>
-                                                    <h4 className='card-text-title'>{currentProduct.title}</h4>
+                                                    <h6 className='card-text-title'>{currentProduct.title}</h6>
+
                                                     <div className='card-text-price-home'>
                                                         <span>Price</span>
                                                         <h4>${(Number(currentProduct.price)).toFixed(2)}</h4>
                                                     </div>
-                                                    <Button
+                                                    <button className='cart-btn'
                                                         // onClick={() => dispatch(filterProductsTitleThunk(productSearchInput))}
                                                         variant="outline-secondary" id="button-addon2">
-                                                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                                                    </Button>
-                                                </div>                                      </Card.Body>
+                                                        <i className="fa-solid fa-cart-shopping fa-xl "></i>
+                                                    </button>
+                                                </div>
+                                            </Card.Body>
                                         </Link>
                                     </Card>
                                 </div>

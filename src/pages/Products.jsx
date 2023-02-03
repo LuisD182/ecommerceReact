@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Button, Card, Carousel, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { addProductsThunk } from '../store/slices/cart.slice';
 import { filterProductsCategoryThunk } from '../store/slices/products.slice';
 import LoadingScreen from '../styles/LoadingScreen';
 
@@ -14,6 +15,7 @@ const Products = () => {
     const productsRedux = useSelector(state => state?.products)
     const isLoading = useSelector(state => state.isLoading)
     // As this loader inst working as well as it supouse for th async [#] in the api, another is created
+    // const [productSearchInput, setProductSearchInput] = useState('')
 
     const [loading, setLoading] = useState(true)
 
@@ -33,10 +35,33 @@ const Products = () => {
             })
     }, [id])
 
-    console.log(product);
+    // console.log(product);
+    const [quantity, setQuantity] = useState(1)
+
+    const addProduct = ()=>{
+        const  aPurchase ={
+            'productId': product.id,
+            'quantity': quantity
+        }
+        console.log(aPurchase);
+        dispatch(addProductsThunk(aPurchase))
+        alert('Product succesfully added to the cart')
+    }
+
+    const rest = ()=> {
+        if(quantity > 1){
+            setQuantity(quantity-1)
+        } else{
+            setQuantity === 1
+        }
+    }
+    const add = ()=> {
+        setQuantity(1+quantity)
+        }
+
 
     return (
-        <div>
+        <section>
             {loading ? (<LoadingScreen />) : (
                 <div>
                     <Row className='my-5'>
@@ -78,32 +103,48 @@ const Products = () => {
                             <span>{product.brand}</span>
                             <section className='product-description'>
                                 <h1>{product.title}</h1>
-                                <p>{product.description}</p>
+                                <h6>{product.description}</h6>
                             </section>
                             <div className='product-info'>
                                 <div className='price'>
                                     <span>Price</span>
                                     <h3>$ {(Number(product.price)).toFixed(2)}</h3>
                                 </div>
-                                <div >
+                                {/* <div >
                                     <span>Quantity</span>
                                     <div className='quantity'>
-                                        <button>-</button>
-                                        <h3>1</h3>
-                                        <button>+</button>
+                                        <button 
+                                        
+                                        className='plus-minus-btn'
+                                        onClick={()=>rest()}>-</button>
+                                        <input 
+                                        className='input-quantity'
+                                        type='number'      
+                                        value={quantity}
+                                        onChange= {e =>setQuantity(e.target.value)}
+                                        placeholder= {0}
+                                        >
+                                        
+                                        </input>
+                                        <button
+                                        className='plus-minus-btn'
+                                        onClick={()=> add()}>+</button>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
-                            <button className='add-btn'>Add to cart</button>
+                            <button 
+                            onClick={()=>{addProduct()}}
+                            className='add-btn'>Add to cart</button>
                         </Col>
                     </Row>
                     {/* Suggestions */}
-                    <h3>Dis</h3>
+                    <h3 className='discover'>Discover similar items</h3>
                     <Row sm={2}>
                         {
                             loading ? (<LoadingScreen />) : (
                                 productsRedux.map(recomendedProduct => (
-                                    <Card>
+                                    <Card
+                                        key={recomendedProduct.id}>
                                         <Link to={`/products/${recomendedProduct.id}`}
                                             style={{ textDecoration: 'none' }}
                                         >
@@ -121,17 +162,18 @@ const Products = () => {
                                             </div>
                                             <Card.Body>
                                                 <Card.Title>{recomendedProduct.title}</Card.Title>
-                                                <Card.Text className='card-text'>
+                                                <div className='card-text'>
                                                     <div>
                                                         <span>Price</span>
                                                         <h3>${(Number(recomendedProduct.price)).toFixed(2)}</h3>
                                                     </div>
-                                                    <Button
-                                                        // onClick={() => dispatch(filterProductsTitleThunk(productSearchInput))}
+                                                    <button 
+                                                        className='cart-product-icon'
+                                                        onClick={()=>addProduct()}
                                                         variant="outline-secondary" id="button-addon2">
-                                                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                                                    </Button>
-                                                </Card.Text>
+                                                        <i className="fa-solid fa-cart-shopping fa-xl"></i>
+                                                    </button>
+                                                </div>
 
                                             </Card.Body>
                                         </Link>
@@ -142,7 +184,7 @@ const Products = () => {
                     </Row>
                 </div>
             )}
-        </div>
+        </section>
     );
 };
 
