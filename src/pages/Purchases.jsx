@@ -28,7 +28,7 @@ const Purchases = () => {
                                  <h4> <span>Date</span> {`  ${purchase.updatedAt.slice(0, -14)} `}</h4>
                                 </Row>
                                 <Col className='columns-Purchase'>
-                                    <img src={purchase.product.images[0].url}
+                                    <img src={purchase.product?.images[0].url}
                                         style={{ maxHeight: 200, maxWidth: 200, objectFit: 'contain', cursor: 'pointer' }}
                                         alt=""
                                         onClick={()=> navigate(`/products/${purchase.product.id}`)} 
@@ -38,10 +38,10 @@ const Purchases = () => {
                                     <h4
                                      onClick={()=> navigate(`/products/${purchase.product.id}`)}
                                      style={{cursor: 'pointer'}}
-                                    >{purchase.product.title}</h4></Col>
+                                    >{purchase.product?.title}</h4></Col>
                                  <Col className='columns-Purchase'>
                                      <span>Price</span> 
-                                     <h4>{purchase.product.price}</h4></Col>
+                                     <h4>{purchase.product?.price}</h4></Col>
                                 <Col className='columns-Purchase'>
                                     <span>Quantity</span> 
                                  <h4> {purchase.quantity}</h4></Col>

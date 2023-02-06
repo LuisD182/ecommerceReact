@@ -8,7 +8,6 @@ const Cart = ({ show, handleClose }) => {
 
     const dispatch = useDispatch();
     const cartProducts = useSelector(state => state.cart)
-    console.log(cartProducts);
 
     useEffect(() => {
         dispatch(getCartThunk())
@@ -100,7 +99,7 @@ const Cart = ({ show, handleClose }) => {
                     <h3 className='total-cart'>Total = ${total}</h3>
                     <button
                         className='delete-btn'
-                        onClick={() => dispatch(purchaseCartThunk(cartProduct.id))}>Check out</button>
+                        onClick={() => dispatch(purchaseCartThunk(cartProducts.id))}>Check out</button>
 
                 </Offcanvas.Body>
             </Offcanvas>
